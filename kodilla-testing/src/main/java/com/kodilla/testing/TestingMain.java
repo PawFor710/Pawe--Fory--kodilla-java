@@ -1,49 +1,26 @@
 package com.kodilla.testing;
 
 import com.kodilla.testing.calculator.Calculator;
+import com.kodilla.testing.collection.OddNumberExterminator;
 import com.kodilla.testing.user.SimpleUser;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 public class TestingMain {
     public static void main(String[] args) {
-        SimpleUser simpleUser = new SimpleUser("theForumUser");
 
-        String result = simpleUser.getUsername();
-        // Start of test1 "SimpleUser"
-        System.out.println("Mój pierwszy test jednostkowy: ");
+        LinkedList<Integer> oddNumbers = new LinkedList<>();
+        oddNumbers.add(1);
+        oddNumbers.add(4);
+        oddNumbers.add(5);
+        oddNumbers.add(12);
+        oddNumbers.add(51);
 
-        if (result.equals("theForumUser")) {
-            System.out.println("test OK");
-        } else {
-            System.out.println("Error");
-        }
+        OddNumberExterminator numberExterminator = new OddNumberExterminator();
+        numberExterminator.exterminate(oddNumbers);
 
-
-
-        // Start of test2 "Calculator"
-        System.out.println("\nTest kalkulatora: ");
-
-        Calculator calculator = new Calculator(10, 5);
-        
-        Integer adding = calculator.addAtoB();
-        Integer added = calculator.getA() + calculator.getB();
-        Integer subtract = calculator.subtractBfromA();
-        Integer subtracted = calculator.getA() - calculator.getB();
-
-        
-        // Jednostkowy test dodawania
-        if (adding.equals(added)) {
-            System.out.println("Adding test is OK!");
-        } else {
-            System.out.println("ERROR");
-        }
-
-        // Jednostkowy test odejmowania
-        if (subtract.equals(subtracted)) {
-            System.out.println("Subtracting test is OK!");
-        } else {
-            System.out.println("ERROR");
-        }
+        System.out.println(numberExterminator.exterminate(oddNumbers));
     }
 }
