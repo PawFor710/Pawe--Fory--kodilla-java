@@ -40,7 +40,6 @@ public class Square implements Shape {
         //temporary value 10
         return 10;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -48,7 +47,6 @@ public class Square implements Shape {
         Square square = (Square) o;
         return Double.compare(square.length, length) == 0 && Double.compare(square.height, height) == 0 && Double.compare(square.resultOfField, resultOfField) == 0 && Objects.equals(name, square.name);
     }
-
     @Override
     public int hashCode() {
         return 10 * name.hashCode();

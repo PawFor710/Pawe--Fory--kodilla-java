@@ -35,7 +35,6 @@ public class Triangle implements Shape {
         //temporary value 10
         return 10;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -43,7 +42,6 @@ public class Triangle implements Shape {
         Triangle triangle = (Triangle) o;
         return Double.compare(triangle.length, length) == 0 && Double.compare(triangle.height, height) == 0 && Double.compare(triangle.resultOfField, resultOfField) == 0 && Objects.equals(name, triangle.name);
     }
-
     @Override
     public int hashCode() {
         return 10 * name.hashCode();

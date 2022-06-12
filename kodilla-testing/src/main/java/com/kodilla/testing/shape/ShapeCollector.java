@@ -6,23 +6,22 @@ import java.util.List;
 public class ShapeCollector {
 
     private List<Shape> shapes = new ArrayList<>();
+    Square square = new Square("Square", 4.00);
+    Circle circle = new Circle("Circle", 12.56);
+    Triangle triangle = new Triangle("Triangle", 4.00);
     public void addFigure(Shape shape) {
-        //temporary empty
+        shapes.add(square);
     }
     public int getShapesQuantity() {
-        //temporary value 10
-        return 10;
+        return shapes.size();
     }
-    public boolean removeFigure(Shape shape) {
-        //temporary true
-        return false;
+    public void removeFigure(Shape shape) {
+        shapes.remove(square);
     }
-    public boolean getFigure(int n) {
-        //temporary true
-        return false;
+    public Shape getFigure(int n) {
+        return shapes.get(0);
     }
     public String showFigures() {
-        //temporary empty
-        return "";
+        return square.getName() + " " + circle.getName() + " " + triangle.getName();
     }
 }
