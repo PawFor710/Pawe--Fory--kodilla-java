@@ -2,6 +2,9 @@ package com.kodilla.testing.shape;
 
 import org.junit.jupiter.api.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @DisplayName("TDD: Shape Test Suite")
 public class ShapeCollectorTestSuite {
 
@@ -30,7 +33,25 @@ public class ShapeCollectorTestSuite {
             //When
             shapeCollector.addFigure(square);
             //Then
-            Assertions.assertEquals(1, shapeCollector.getShapesQuantity());
+            Assertions.assertEquals(2, shapeCollector.getShapesQuantity());
+        }
+    }
+    @Nested
+    @DisplayName("Test for getting shape from list")
+    class TestGettingFigure {
+        @Test
+        void testGetFigure() {
+            //Given
+            List<Shape> testShape = new ArrayList<>();
+            ShapeCollector shapeCollector = new ShapeCollector();
+            Shape square = new Square("Square", 4.00);
+            Shape circle = new Circle("Circle", 12.56);
+            testShape.add(square);
+            testShape.add(circle);
+            //When
+            Shape resultTest = shapeCollector.getFigure(1);
+            //Then
+            Assertions.assertEquals(testShape.get(1), resultTest);
         }
     }
     @Nested
@@ -45,20 +66,6 @@ public class ShapeCollectorTestSuite {
             shapeCollector.removeFigure(square);
             //Then
             Assertions.assertEquals(0, shapeCollector.getShapesQuantity());
-        }
-    }
-    @Nested
-    @DisplayName("Test for getting shape from list")
-    class TestGettingFigure {
-        @Test
-        void testGetFigure() {
-            //Given
-            ShapeCollector shapeCollector = new ShapeCollector();
-            Shape square = new Square("Square", 4.00);
-            //When
-            ShapeCollector testedShape = (ShapeCollector) shapeCollector.getFigure(0);
-            //Then
-            Assertions.assertEquals(square, testedShape);
         }
     }
     @Nested

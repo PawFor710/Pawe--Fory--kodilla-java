@@ -10,17 +10,23 @@ public class ShapeCollector {
     Circle circle = new Circle("Circle", 12.56);
     Triangle triangle = new Triangle("Triangle", 4.00);
     public void addFigure(Shape shape) {
+
         shapes.add(square);
+        shapes.add(circle);
     }
     public int getShapesQuantity() {
         return shapes.size();
     }
+    public Shape getFigure(int n) {
+        n = 0;
+        shapes.get(n);
+
+        return shapes.get(n);
+    }
     public void removeFigure(Shape shape) {
         shapes.remove(square);
     }
-    public Shape getFigure(int n) {
-        return shapes.get(0);
-    }
+
     public String showFigures() {
         return square.getName() + " " + circle.getName() + " " + triangle.getName();
     }
