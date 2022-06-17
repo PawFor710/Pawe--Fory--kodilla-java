@@ -42,16 +42,15 @@ public class ShapeCollectorTestSuite {
         @Test
         void testGetFigure() {
             //Given
-            List<Shape> testShape = new ArrayList<>();
             ShapeCollector shapeCollector = new ShapeCollector();
             Shape square = new Square("Square", 4.00);
             Shape circle = new Circle("Circle", 12.56);
-            testShape.add(square);
-            testShape.add(circle);
+            shapeCollector.addFigure(square);
+            shapeCollector.addFigure(circle);
             //When
             Shape resultTest = shapeCollector.getFigure(1);
             //Then
-            Assertions.assertEquals(testShape.get(1), resultTest);
+            Assertions.assertEquals("Circle", resultTest.getShapeName());
         }
     }
     @Nested

@@ -11,14 +11,12 @@ public class ShapeCollector {
     Triangle triangle = new Triangle("Triangle", 4.00);
     public void addFigure(Shape shape) {
 
-        shapes.add(square);
-        shapes.add(circle);
+        shapes.add(shape);
     }
     public int getShapesQuantity() {
         return shapes.size();
     }
     public Shape getFigure(int n) {
-        n = 0;
         shapes.get(n);
 
         return shapes.get(n);

@@ -23,8 +23,7 @@ public class Circle implements Shape {
     }
     @Override
     public String getShapeName() {
-        //temporary no name
-        return "";
+        return "Circle";
     }
     @Override
     public double getField() {
