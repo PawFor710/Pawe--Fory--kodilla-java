@@ -33,7 +33,7 @@ public class ShapeCollectorTestSuite {
             //When
             shapeCollector.addFigure(square);
             //Then
-            Assertions.assertEquals(2, shapeCollector.getShapesQuantity());
+            Assertions.assertEquals(1, shapeCollector.getShapesQuantity());
         }
     }
     @Nested
