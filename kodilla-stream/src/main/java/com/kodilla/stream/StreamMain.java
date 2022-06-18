@@ -1,32 +1,25 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.beautifier.PoemBeautifier;
-import com.kodilla.stream.iterate.NumbersGenerator;
-import com.kodilla.stream.lambda.*;
-import com.kodilla.stream.reference.FunctionalCalculator;
+import com.kodilla.stream.forumuser.Forum;
+import com.kodilla.stream.forumuser.ForumUser;
 
-import java.util.Locale;
+import java.util.Date;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
-        // 7.1
-        PoemBeautifier poemBeautifier = new PoemBeautifier();
+        Forum forum = new Forum();
+        Map<Integer, ForumUser> theResultMapOfUsers = forum.getUsersList().stream()
+                .filter(user -> user.getGender() == 'M')
+                .filter(user -> 2022 - user.getBirthDate().getYear() >= 20)
+                .filter(user -> user.getPosts() >= 1)
+                .collect(Collectors.toMap(ForumUser::getUserId, user -> user));
 
-        poemBeautifier.beautify("This sentence needs a dot at the end",
-                textToDecorate -> textToDecorate + ".");
-        poemBeautifier.beautify("This one needs exclamation sign",
-                textToDecorate -> textToDecorate + "!");
-        poemBeautifier.beautify("Do i need more sentence",
-                textDecorator -> textDecorator + "?");
-        poemBeautifier.beautify("let's make this sentence bigger",
-                textDecorator -> textDecorator.toUpperCase(Locale.ROOT));
-        poemBeautifier.beautify("BUT THIS SENTENCE IS GOING TO BE LOWER",
-                textDecorator -> textDecorator.toLowerCase());
-        poemBeautifier.beautify("How long is the last sentence?",
-                textDecorator -> textDecorator + " The answer is: " + textDecorator.length());
+        System.out.println("# elements: " + theResultMapOfUsers.size());
+        theResultMapOfUsers.entrySet().stream()
+                .map(entry -> entry.getKey() + ": " + entry.getValue())
+                .forEach(System.out::println);
 
-        //7.2
-        System.out.println("Using Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(20);
     }
 }
