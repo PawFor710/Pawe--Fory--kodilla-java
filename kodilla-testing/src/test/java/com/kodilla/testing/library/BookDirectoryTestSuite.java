@@ -18,6 +18,9 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class BookDirectoryTestSuite {
 
+    @Mock
+    private LibraryDatabase libraryDatabaseMock;
+
     @Nested
     @DisplayName("Tests of list of books with condition")
     public class TestListBooksWithCondition {
@@ -29,9 +32,6 @@ public class BookDirectoryTestSuite {
             }
             return resultList;
         }
-
-        @Mock
-        private LibraryDatabase libraryDatabaseMock;
 
         @Test
         void testListBooksWithConditionsReturnList() {
@@ -86,7 +86,6 @@ public class BookDirectoryTestSuite {
         }
     }
 
-
     @Nested
     @DisplayName("Tests of books in hands of")
     public class TestListBooksInHandsOf {
@@ -99,6 +98,7 @@ public class BookDirectoryTestSuite {
             }
             return resultList;
         }
+
         private List<LibraryUser> generateUsers(int booksInHands) {
             List<LibraryUser> resultBooks = new ArrayList<>();
             for (int i = 0; i < booksInHands; i++) {
@@ -108,9 +108,6 @@ public class BookDirectoryTestSuite {
             }
             return resultBooks;
         }
-
-        @Mock
-        private LibraryDatabase libraryDatabaseMock;
 
         @Test
         void testListBooksInHands() {
