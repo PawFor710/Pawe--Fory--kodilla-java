@@ -13,15 +13,18 @@ public class ShapeCollectorTestSuite {
     public static void beforeAllTests() {
         System.out.println("This is the beginning of tests.");
     }
+
     @AfterAll
     public static void afterAllTests() {
         System.out.println("This is the beginning of tests.");
     }
+
     @BeforeEach
     public void beforeEveryTest() {
         counter++;
         System.out.println("Prepering to execute test");
     }
+
     @Nested
     @DisplayName("Test for adding figures method")
     class TestAddingFigures {
@@ -36,6 +39,7 @@ public class ShapeCollectorTestSuite {
             Assertions.assertEquals(1, shapeCollector.getShapesQuantity());
         }
     }
+
     @Nested
     @DisplayName("Test for getting shape from list")
     class TestGettingFigure {
@@ -53,6 +57,7 @@ public class ShapeCollectorTestSuite {
             Assertions.assertEquals("Circle", resultTest.getShapeName());
         }
     }
+
     @Nested
     @DisplayName("Test for removing figures method")
     class TestRemovingFigures {
@@ -67,6 +72,7 @@ public class ShapeCollectorTestSuite {
             Assertions.assertEquals(0, shapeCollector.getShapesQuantity());
         }
     }
+
     @Nested
     @DisplayName("Test for returning every figures' name")
     class TestReturningFigures {
