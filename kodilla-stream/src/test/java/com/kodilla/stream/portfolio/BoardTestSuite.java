@@ -163,5 +163,12 @@ public class BoardTestSuite {
                 .flatMap(m -> m.getTasks().stream())
                 .collect(toList());
 
+        double average = tasksInProgress.stream()
+                .mapToLong(task -> ChronoUnit.DAYS.between(task.getCreated(), LocalDate.now()))
+                .average()
+                .getAsDouble();
+
+        //Then
+        assertEquals(10, average);
     }
 }
