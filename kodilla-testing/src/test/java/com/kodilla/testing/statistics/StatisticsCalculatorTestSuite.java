@@ -18,7 +18,5 @@ public class StatisticsCalculatorTestSuite {
 
 
         //Given
-        StatisticsCalculator statisticsCalculator = new StatisticsCalculator();
-        statisticsCalculator.calculateAdvStatistics(statisticsMock);
     }
 }

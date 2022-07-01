@@ -5,27 +5,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class Continent {
-    Country country = new Country();
 
-    public List<BigDecimal> getCountriesOfEurope() {
-        List<BigDecimal> europe = new ArrayList<>();
-        europe.add(country.getPeopleQuantityOfPoland());
-        europe.add(country.getPeopleQuantityOfItaly());
-        europe.add(country.getPeopleQuantityOfSpain());
+    private final String nameOfContinent;
+
+    public Continent(String nameOfContinent) {
+        this.nameOfContinent = nameOfContinent;
+    }
+
+    public String getNameOfContinent() {
+        return nameOfContinent;
+    }
+
+    public List<Country> getCountriesOfEurope() {
+        List<Country> europe = new ArrayList<>();
+        europe.add(new Country("Poland", new BigDecimal("1000")));
+        europe.add(new Country("Italy", new BigDecimal("1000")));
+        europe.add(new Country("Spain", new BigDecimal("1000")));
         return europe;
     }
-    public List<BigDecimal> getCountriesOfAsia() {
-        List<BigDecimal> asia = new ArrayList<>();
-        asia.add(country.getPeopleQuantityOfChina());
-        asia.add(country.getPeopleQuantityOfIndia());
-        asia.add(country.getPeopleQuantityOfIndonesia());
+    public List<Country> getCountriesOfAsia() {
+        List<Country> asia = new ArrayList<>();
+        asia.add(new Country("China", new BigDecimal("1439323776")));
+        asia.add(new Country("India", new BigDecimal("1380004385")));
+        asia.add(new Country("Indonesia", new BigDecimal("273523615")));
         return asia;
     }
-    public List<BigDecimal> getCountriesOfAfrica() {
-        List<BigDecimal> africa = new ArrayList<>();
-        africa.add(country.getPeopleQuantityOfNigeria());
-        africa.add(country.getPeopleQuantityOfEthiopia());
-        africa.add(country.getPeopleQuantityOfEgypt());
+    public List<Country> getCountriesOfAfrica() {
+        List<Country> africa = new ArrayList<>();
+        africa.add(new Country("Nigeria", new BigDecimal("206139589")));
+        africa.add(new Country("Ethiopia", new BigDecimal("114963588")));
+        africa.add(new Country("Egypt", new BigDecimal("102334404")));
         return africa;
     }
 }

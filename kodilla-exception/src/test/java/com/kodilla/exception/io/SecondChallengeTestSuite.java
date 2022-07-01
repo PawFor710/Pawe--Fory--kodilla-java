@@ -12,14 +12,12 @@ public class SecondChallengeTestSuite {
         //Given
         SecondChallenge secondChallenge = new SecondChallenge();
 
-        //When
-        assertAll(
-                () -> assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(2, 2)),
-                () -> assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(2.1, 2)),
-                () -> assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(0.9, 2)),
-                () -> assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(1.1, 1.5)),
-                () -> assertDoesNotThrow(() -> secondChallenge.probablyIWillThrowException(1.9, 2)),
-                () -> assertDoesNotThrow(() -> secondChallenge.probablyIWillThrowException(1, 2))
-        );
+        //When and Then
+        assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(2, 2));
+        assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(2.1, 2));
+        assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(0.9, 2));
+        assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(1.1, 1.5));
+        assertDoesNotThrow(() -> secondChallenge.probablyIWillThrowException(1.9, 2));
+        assertDoesNotThrow(() -> secondChallenge.probablyIWillThrowException(1, 2));
     }
 }
