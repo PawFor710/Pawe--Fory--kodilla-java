@@ -5,33 +5,33 @@ import java.util.List;
 
 public class StatisticsCalculator {
 
-    double postsPerUser = 0;
-    double commentsPerUser = 0;
-    double commentsPerPost = 0;
 
-    public double getPostsPerUser() {
-        return postsPerUser;
-    }
-    public double getCommentsPerUser() {
-        return commentsPerUser;
-    }
-    public double getCommentsPerPost() {
-        return commentsPerPost;
-    }
-    public void calculateAdvStatistics(Statistics statistics) {
+    List<String> users = new ArrayList<>();
+    List<String> comments = new ArrayList<>();
+    List<String> posts = new ArrayList<>();
 
-        List<String> users = new ArrayList<>();
-        users.size();
-
-        List<String> comments = new ArrayList<>();
-        comments.size();
-
-        List<String> posts = new ArrayList<>();
-        posts.size();
-
-        postsPerUser = posts.size() / users.size();
-        commentsPerUser = comments.size() / users.size();
-        commentsPerPost = comments.size() / posts.size();
+    public StatisticsCalculator(List<String> users, List<String> comments, List<String> posts) {
+        this.users = users;
+        this.comments = comments;
+        this.posts = posts;
     }
 
+    public int postCount() {
+        return posts.size();
+    }
+    public int commentsCount() {
+        return comments.size();
+    }
+
+    public int usersCount() {
+        return users.size();
+    }
+
+    public Stats calculateAdvStatistics(Statistics statistics) {
+        double postsPerUser = postCount() / (double) usersCount();
+        double commentsPerUser = commentsCount() / (double) usersCount();
+        double commentsPerPost = commentsCount() / (double) postCount();
+
+        return new Stats(postsPerUser, commentsPerUser, commentsPerPost);
+    }
 }
