@@ -9,7 +9,6 @@ public class TaskList {
 
     public TaskList(List<String> tasks) {
         this.tasks = tasks;
-        tasks = new ArrayList<>();
     }
 
     public List<String> getTasks() {
