@@ -9,5 +9,6 @@ public class Application {
 
         ProductOrderService productOrderService = new ProductOrderService(
                 new MailService(), new BookShop(), new ShopRepository());
+        productOrderService.process(orderRequest);
     }
 }

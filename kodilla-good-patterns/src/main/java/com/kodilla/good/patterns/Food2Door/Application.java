@@ -1,6 +1,4 @@
-package Food2Door;
-
-import com.kodilla.good.patterns.challenges.MailService;
+package com.kodilla.good.patterns.Food2Door;
 
 public class Application {
 
