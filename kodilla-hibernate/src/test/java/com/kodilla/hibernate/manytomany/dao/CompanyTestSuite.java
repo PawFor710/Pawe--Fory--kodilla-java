@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 @SpringBootTest
@@ -13,6 +16,8 @@ public class CompanyTestSuite {
 
     @Autowired
     private CompanyDao companyDao;
+    @Autowired
+    private EmployeeDao employeeDao;
 
     @Test
     void testSaveManyToMany() {
@@ -57,6 +62,53 @@ public class CompanyTestSuite {
             companyDao.deleteById(greyMatterId);
         } catch (Exception e) {
             //do nothing
+        }
+    }
+
+    @Test
+    void testNamedQueries() {
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
+        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+
+        Company softwareMachine = new Company("Software Machine");
+        Company dataMaesters = new Company("Data Maesters");
+        Company greyMatter = new Company("Grey Matter");
+
+        companyDao.save(softwareMachine);
+        int softwareMachineId = softwareMachine.getId();
+        companyDao.save(dataMaesters);
+        int dataMaestersId = dataMaesters.getId();
+        companyDao.save(greyMatter);
+        int greyMatterId = greyMatter.getId();
+
+        employeeDao.save(johnSmith);
+        int johnSmithId = johnSmith.getId();
+        employeeDao.save(stephanieClarckson);
+        int stephanieClarcksonId = stephanieClarckson.getId();
+        employeeDao.save(lindaKovalsky);
+        int lindaKovalskyId = lindaKovalsky.getId();
+
+        //When
+        List<Employee> chosenNameList = employeeDao.retrieveChosenName("Smith");
+        List<Company> companyList = companyDao.retrieveFirstThreeLetters("Sof");
+
+
+        //Then
+        try {
+            assertEquals(1, chosenNameList.size());
+            assertEquals("Smith", chosenNameList.get(0).getLastname());
+            assertEquals(1, companyList.size());
+            assertEquals("Software Machine", companyList.get(0).getName());
+        } finally {
+            //CleanUp
+            employeeDao.deleteById(johnSmithId);
+            employeeDao.deleteById(stephanieClarcksonId);
+            employeeDao.deleteById(lindaKovalskyId);
+            companyDao.deleteById(softwareMachineId);
+            companyDao.deleteById(dataMaestersId);
+            companyDao.deleteById(greyMatterId);
         }
     }
 }
