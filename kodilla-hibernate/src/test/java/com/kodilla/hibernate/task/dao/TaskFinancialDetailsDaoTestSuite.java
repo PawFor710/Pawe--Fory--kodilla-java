@@ -8,7 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.math.BigDecimal;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
 public class TaskFinancialDetailsDaoTestSuite {

@@ -5,6 +5,7 @@ import com.kodilla.hibernate.task.TaskFinancialDetails;
 import com.kodilla.hibernate.tasklist.TaskList;
 import com.kodilla.hibernate.tasklist.dao.TaskListDao;
 import com.sun.xml.bind.v2.TODO;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,8 +14,8 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 public class TaskDaoTestSuite {
