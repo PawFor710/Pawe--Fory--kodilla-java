@@ -8,6 +8,6 @@ public class OrderProcessingException extends Throwable {
     public static String ERR_SUBMITTING_ERROR = "Cannot submit order";
 
     public OrderProcessingException(String message) {
-        super();
+        super(message);
     }
 }

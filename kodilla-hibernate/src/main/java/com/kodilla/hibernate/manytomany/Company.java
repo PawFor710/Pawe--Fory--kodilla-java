@@ -11,9 +11,15 @@ import java.util.List;
         query = "SELECT * FROM COMPANIES WHERE LEFT(COMPANY_NAME,3) = :COMPANY_NAME",
         resultClass = Company.class
 )
+@NamedNativeQuery(
+        name = "Company.retrieveByAnyLetters",
+        query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE CONCAT('%', :anyLetters , '%')",
+        resultClass = Company.class
+)
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
+
 
     private int id;
     private String name;
