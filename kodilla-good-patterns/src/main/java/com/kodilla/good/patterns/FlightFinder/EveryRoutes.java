@@ -6,14 +6,11 @@ import java.util.stream.Collectors;
 
 public class EveryRoutes {
 
-    EveryFlights everyFlights = new EveryFlights();
 
-    public List<String> showEveryRouts() {
+    public List<Map.Entry<Departures, Arrive>> showEveryRouts() {
+        return null;
 
-        List<String> departures = everyFlights.showListOfRouts().entrySet().stream()
-                .map(Map.Entry::getKey)
-                .collect(Collectors.toList());
-
-        return departures;
     }
+
+
 }
