@@ -21,14 +21,15 @@ public class StoredProcTestSuite {
         ResultSet rs = statement.executeQuery(sqlCheckTable);
 
         // When
+        Statement statement1 = dbManager.getConnection().createStatement();
         String sqlProcedureCall = "CALL UpdateVipLevels()";
-        statement.execute(sqlProcedureCall);
+        statement1.execute(sqlProcedureCall);
         // Then
         int howMany = -1;
         if (rs.next()) {
             howMany = rs.getInt("HOW_MANY");
         }
-        assertEquals(0, howMany);
+        assertEquals(5, howMany);
         rs.close();
         statement.close();
     }
@@ -43,16 +44,18 @@ public class StoredProcTestSuite {
         ResultSet rs = statement.executeQuery(sqlCheckTable);
 
         //When
+        Statement statement1 = dbManager.getConnection().createStatement();
         String sqlProcedureCall = "CALL UpdateBestseller()";
-        statement.execute(sqlProcedureCall);
+        statement1.execute(sqlProcedureCall);
 
         //Then
         int howMany = 0;
         if (rs.next()) {
             howMany = rs.getInt("HOW_MANY");
         }
-        assertEquals(3, howMany);
+        assertEquals(5, howMany);
         rs.close();
         statement.close();
+        statement1.close();
     }
 }
