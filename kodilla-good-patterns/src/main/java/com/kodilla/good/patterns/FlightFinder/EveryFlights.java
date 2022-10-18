@@ -1,52 +1,43 @@
 package com.kodilla.good.patterns.FlightFinder;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class EveryFlights {
 
-    private final Departures departures;
-    private final Arrive arrive;
+    public Set<Flight> listOfRouts() {
 
+        Flight fromGdanskToWroclaw = new Flight("Gdansk", "Wroclaw");
+        Flight fromWroclawToGdansk = new Flight("Wroclaw", "Gdansk");
 
-    public EveryFlights(Arrive arrive, Departures departures) {
-        this.arrive = arrive;
-        this.departures = departures;
-    }
+        Flight fromKrakowToWarsaw = new Flight("Krakow", "Warsaw");
+        Flight fromWarsawToKrakow= new Flight("Warsaw", "Krakow");
 
-    public Arrive getArrive() {
-        return arrive;
-    }
+        Flight fromWarsawToWroclaw = new Flight("Warsaw", "Wroclaw");
+        Flight fromWroclawToWarsaw = new Flight("Wroclaw", "Warsaw");
 
-    public Departures getDepartures() {
-        return departures;
-    }
+        Flight fromWroclawToKrakow = new Flight("Wroclaw", "Krakow");
+        Flight fromKrakowToWroclaw = new Flight("Krakow", "Wroclaw");
 
-    public Map<Departures, Arrive> showListOfRouts() {
+        Set<Flight> routs = new HashSet<>();
 
-        Departures fromGdansk = new Departures("Gdansk");
-        Departures fromKrakow = new Departures("Krakow");
-        Departures fromWarszawa = new Departures("Warszawa");
-        Departures fromWroclaw = new Departures("Wroclaw");
+        routs.add(fromGdanskToWroclaw);
+        routs.add(fromWroclawToGdansk);
 
-        Arrive toWroclaw = new Arrive("Wroclaw");
-        Arrive toGdansk = new Arrive("Gdans");
-        Arrive toWarszawa = new Arrive("Warszawa");
-        Arrive toKrakow = new Arrive("Krakow");
+        routs.add(fromKrakowToWarsaw);
+        routs.add(fromWarsawToKrakow);
 
+        routs.add(fromWarsawToWroclaw);
+        routs.add(fromWroclawToWarsaw);
 
-        Map<Departures, Arrive> routs = new HashMap<>();
-        routs.put(fromGdansk, toWroclaw);
-        routs.put(fromKrakow, toWarszawa);
-        routs.put(fromWarszawa, toWroclaw);
-        routs.put(fromWroclaw, toKrakow);
-        routs.put(fromWarszawa, toGdansk);
+        routs.add(fromWroclawToKrakow);
+        routs.add(fromKrakowToWroclaw);
 
         return routs;
-    }
-
-    @Override
-    public String toString() {
-        return "You can fly from: " + departures + " to: " + arrive;
     }
 }
